@@ -53,12 +53,12 @@ const Installation = () => {
       <h2 className="text-xl font-semibold mb-4">Installation Guide</h2>
       <ol className="list-decimal pl-5 space-y-2">
         <li>
-          <code>git clone https://github.com/your-repo-link.git</code>
+          <code>git clone https://github.com/Arun-Kumar21/employwise-assignment.git</code>
           <br />
           <span className="text-gray-500">Clone the repository</span>
         </li>
         <li>
-          <code>cd your-project-folder</code>
+          <code>cd employwise-assignment</code>
           <br />
           <span className="text-gray-500">
             Navigate to the project directory
