@@ -23,20 +23,28 @@ export default function ProfilePage() {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-  const user = useAuthStore((state) => state.user);
-  const { editUser } = useUserStore();
+  const {user, updateUser} = useAuthStore();
+  const { users, editUser } = useUserStore();
 
+  
   if (!user) {
     navigate("/");
+    return null;
+  }
+
+  const currentUser = users.find((u) => u.email === user.email)
+
+  if (!currentUser) {
+    navigate("/")
     return null;
   }
 
   const form = useForm<z.infer<typeof userFormSchema>>({
     resolver: zodResolver(userFormSchema),
     defaultValues: {
-      firstname: user?.first_name,
-      lastname: user?.last_name,
-      email: user?.email,
+      firstname: currentUser?.first_name,
+      lastname: currentUser?.last_name,
+      email: currentUser?.email,
     },
   });
 
@@ -58,7 +66,8 @@ export default function ProfilePage() {
         avatar: user.avatar
       } 
 
-      editUser(user.email, updateDetails);
+      editUser(currentUser.email, updateDetails);
+      updateUser({id: user.id, avatar: user.avatar, email:values.email, first_name: values.firstname, last_name: values.lastname});
 
       if (res.status === 200) {
         toast.success("Details updated successfully")
