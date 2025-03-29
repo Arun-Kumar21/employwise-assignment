@@ -1,4 +1,5 @@
 import { User } from '@/store/useAuthStore';
+import { Avatar, AvatarImage } from '@radix-ui/react-avatar';
 import {ColumnDef} from '@tanstack/react-table';
 
 export const columns: ColumnDef<User>[] = [
@@ -8,7 +9,12 @@ export const columns: ColumnDef<User>[] = [
   },
   {
     accessorKey: "avatar",
-    header: "Avatar"
+    header: "Avatar",
+    cell : ({ row }) => (
+      <Avatar>
+        <AvatarImage src={row.getValue("avatar")}/>
+      </Avatar>
+    )
   },
   {
     accessorKey: "first_name",
