@@ -98,7 +98,7 @@ export default function LoginPage() {
               )}
             />
 
-            <Button disabled={loading} type="submit">Log in</Button>
+            <Button disabled={loading} type="submit" className="cursor-pointer">Log in</Button>
           </form>
         </Form>
          

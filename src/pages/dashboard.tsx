@@ -6,8 +6,10 @@ import UserNav from "@/components/navigation/user-nav";
 import { columns } from "@/components/user-table/columns";
 import { DataTable } from "@/components/user-table/data-table";
 import getUserByPage from "@/actions/users/get-UserByPage";
+import useUserStore from "@/store/useUserStore";
 
 export default function DashboardPage () {
+  /*
   const [usersData, setUsersData] = useState<any>([]);
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1); 
@@ -20,9 +22,7 @@ export default function DashboardPage () {
     } catch (error) {
       console.log("DATA_TABLE_ERROR:", error);
       if (axios.isAxiosError(error)) {
-        if (error.status === 400) {
-          toast.error(error.response?.data.error);
-        }
+        toast.error(error.response?.data.error);
       } else {
         toast.error("Something went wrong");
       }
@@ -33,13 +33,17 @@ export default function DashboardPage () {
     fetchUserDataByPage()
   }, [page])
 
+  */
+
+  const {users} = useUserStore();
+
   return (
     <div className="min-h-screen w-full h-full">
       <UserNav />
 
-      <div className="mx-auto w-full md:max-w-3xl my-12">
+      <div className="mx-auto p-2 w-full md:max-w-3xl my-12">
         <h1 className="my-4 text-xl font-semibold">Reqres User Record</h1>
-        <DataTable columns={columns} data={usersData} setPage={setPage} page={page} totalPages={totalPages}/>  
+        <DataTable columns={columns} data={users}/>  
       </div>
     </div>
   )

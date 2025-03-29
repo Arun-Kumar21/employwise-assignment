@@ -4,7 +4,7 @@ export const userRoutes = [
     label: "Home"
   },
   {
-    path: "/user",
+    path: "/user/profile",
     label: "Profile"
   },
   {
