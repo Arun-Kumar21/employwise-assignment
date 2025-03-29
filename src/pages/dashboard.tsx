@@ -1,11 +1,6 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
-import toast from "react-hot-toast";
-
 import UserNav from "@/components/navigation/user-nav";
 import { columns } from "@/components/user-table/columns";
 import { DataTable } from "@/components/user-table/data-table";
-import getUserByPage from "@/actions/users/get-UserByPage";
 import useUserStore from "@/store/useUserStore";
 
 export default function DashboardPage () {
